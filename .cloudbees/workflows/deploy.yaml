@@ -3,12 +3,15 @@ kind: workflow
 name: deploy
 on:
   workflow_dispatch:
-
+    inputs:
+      artifact-id:
+        type: string
+        required: true
 jobs:
   deploy:
     steps:
       - uses: cloudbees-io/register-deployed-artifact@v2
         with:
           labels: mlcb-label-test
-          artifact-id: 3d364f25-ff3d-4181-9a2d-7af32a831500
+          artifact-id: ${{ inputs.artifact-id }}
           target-environment: TestEnvMLCB
