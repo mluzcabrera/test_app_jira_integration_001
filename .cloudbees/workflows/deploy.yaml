@@ -1,0 +1,14 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: deploy
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    steps:
+      - uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          labels: mlcb-label-test
+          artifact-id: 3d364f25-ff3d-4181-9a2d-7af32a831500
+          target-environment: TestEnvMLCB
